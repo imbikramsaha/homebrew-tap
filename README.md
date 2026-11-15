@@ -1,7 +1,9 @@
 # Homebrew tap for TailConnect
 
 ```sh
-brew install --cask imbikramsaha/tap/tailconnect
+brew tap imbikramsaha/tap
+brew trust imbikramsaha/tap        # Homebrew asks you to trust third-party taps once
+brew install --cask tailconnect
 ```
 
 [TailConnect](https://github.com/imbikramsaha/TailConnect) connects all your computers over Tailscale: one-click terminals and editors, port forwarding, screen sharing, file transfer and live resource monitoring.

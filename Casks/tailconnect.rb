@@ -18,7 +18,7 @@ cask "tailconnect" do
 
   # TailConnect updates itself from GitHub Releases.
   auto_updates true
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "TailConnect.app"
   binary "#{appdir}/TailConnect.app/Contents/MacOS/tailconnect"
