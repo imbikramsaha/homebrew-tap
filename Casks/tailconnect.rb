@@ -1,10 +1,11 @@
 # Homebrew cask for TailConnect. Lives in the tap repo
 # github.com/imbikramsaha/homebrew-tap as Casks/tailconnect.rb, so users run:
-#   brew install --cask imbikramsaha/tap/tailconnect
+#   brew tap imbikramsaha/tap && brew trust imbikramsaha/tap
+#   brew install --cask tailconnect
 # scripts/update-cask.sh fills in version and sha256 for a release.
 cask "tailconnect" do
-  version "0.2.0"
-  sha256 "aee77c55b068961b10063ae88834f55916857959cfe4f13423dd4939a7ca0247"
+  version "0.3.0"
+  sha256 "b553ad8baf7ef6c9d2757398014249f0829421daed3cc1ff92d59927636eeba5"
 
   url "https://github.com/imbikramsaha/TailConnect/releases/download/v#{version}/TailConnect-#{version}-macos.dmg"
   name "TailConnect"
@@ -23,7 +24,14 @@ cask "tailconnect" do
   app "TailConnect.app"
   binary "#{appdir}/TailConnect.app/Contents/MacOS/tailconnect"
 
-  uninstall quit: "io.github.imbikramsaha.tailconnect"
+  # Remove paired devices' keys from ~/.ssh/authorized_keys and the
+  # ~/.ssh/config Include before the app goes away.
+  uninstall quit:   "io.github.imbikramsaha.tailconnect",
+            script: {
+              executable:   "#{appdir}/TailConnect.app/Contents/MacOS/tailconnect",
+              args:         ["cleanup"],
+              must_succeed: false,
+            }
 
   zap trash: [
     "~/Library/Application Support/TailConnect",
