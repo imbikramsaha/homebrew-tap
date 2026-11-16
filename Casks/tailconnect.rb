@@ -4,8 +4,8 @@
 #   brew install --cask tailconnect
 # scripts/update-cask.sh fills in version and sha256 for a release.
 cask "tailconnect" do
-  version "0.3.6"
-  sha256 "a2a832dbfafb98a4032bf1d206b9c9432e4f638b40d2a36234d2d7e9fe01e5f4"
+  version "0.3.7"
+  sha256 "9cf57de47c21fe449e46ac6a361e2bb11672b559b48de4ef0f76586973e1a9f6"
 
   url "https://github.com/imbikramsaha/TailConnect/releases/download/v#{version}/TailConnect-#{version}-macos.dmg"
   name "TailConnect"
